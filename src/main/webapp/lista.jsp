@@ -82,6 +82,6 @@
 		</c:forEach>
 	  </tbody>
 	</table>
-	<a href="<%= request.getContextPath()%>/createPaciente" class="btn btn-primary">Agregar nuevo paciente</a>
+	<a href="<%= request.getContextPath()%>/newPaciente" class="btn btn-primary">Agregar nuevo paciente</a>
 </body>
 </html>

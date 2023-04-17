@@ -45,68 +45,72 @@
 	            	</c:if>
 	            
 		            <div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="documento" name="documento" required value="<c:out value="${paciente.documento }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="documento" name="documento" required value="<c:out value="${paciente.documento }" />" >
 					  <label for="nombre">Documento</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.nombre }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="nombre"  name="nombre" required step="any" value="<c:out value="${paciente.nombre }" />" >
 					  <label for="nota1">Nombre</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.apellido }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="apellido"  name="apellido" required step="any" value="<c:out value="${paciente.apellido }" />" >
 					  <label for="nota1">Apellido </label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.email }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="email" class="form-control" id="email"  name="email" required step="any" value="<c:out value="${paciente.email }" />" >
 					  <label for="nota1">Email</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.genero }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="genero"  name="genero" required step="any" value="<c:out value="${paciente.genero }" />" >
 					  <label for="nota1">Genero</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.fechaNacimiento }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="date" class="form-control" id="fechaNacimiento"  name="fechaNacimiento" required step="any" value="<c:out value="${paciente.fechaNacimiento }" />" >
 					  <label for="nota1">Fecha de Nacimiento</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.telefono }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="telefono"  name="telefono" required step="any" value="<c:out value="${paciente.telefono }" />" >
 					  <label for="nota1">Telefono</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.direccion }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="direccion"  name="direccion" required step="any" value="<c:out value="${paciente.direccion }" />" >
 					  <label for="nota1">Direccion</label>
 					</div>
 					
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.peso }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="peso"  name="peso" required step="any" value="<c:out value="${paciente.peso }" />" >
 					  <label for="nota1">Peso</label>
 					</div>
 										
 					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.estatura }" />" disabled="<c:out value="${showInfo }" />">
+					  <input type="text" class="form-control" id="estatura"  name="estatura" required step="any" value="<c:out value="${paciente.estatura }" />" >
 					  <label for="nota1">Estatura</label>
 					</div>
-										
-					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.imc }" />" disabled="<c:out value="${showInfo }" />">
-					  <label for="nota1">I.M.C</label>
-					</div>
+					<c:if test="${showInfo }"> 					
+						<div class="form-floating mb-3">
+						  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.imc }" />" >
+						  <label for="nota1">I.M.C</label>
+						</div>
+						<div class="form-floating mb-3">
+						  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.imc }" />" >
+						  <label for="nota1">Indicador de Estado</label>
+						</div>
+					</c:if>
 					
-					<div class="form-floating mb-3">
-					  <input type="text" class="form-control" id="nombre"  name="nota1" required step="any" value="<c:out value="${paciente.imc }" />" disabled="<c:out value="${showInfo }" />">
-					  <label for="nota1">Indicador de Estado</label>
-					</div>
 					
 					<c:if test="${showInfo }"> 
-						<a class="btn btn-primary" href="list" role="button">Ver información</a>				
+						<a class="btn btn-primary" href="list" role="button">Regresar</a>				
 					</c:if>
+					<c:if test="${! showInfo }"> 
+						<button class="btn btn-primary" type="submit" role="button">Enviar</button>
+					</c:if>				
 	            </form>
 	           
 	        </div>

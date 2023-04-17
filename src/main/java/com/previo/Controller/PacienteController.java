@@ -1,6 +1,7 @@
 package com.previo.Controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletConfig;
@@ -51,8 +52,10 @@ public class PacienteController extends HttpServlet {
 		switch (accion) {
 		
 		case "/newPaciente":
+			showPatientPage(request,response);
 			break;
 		case "/createPaciente":
+			createNewPatient(request, response);
 			break;
 		case "/actualizarPaciente":
 			break;
@@ -73,7 +76,7 @@ public class PacienteController extends HttpServlet {
 	}
 	
 	
-	
+
 	//Método para listar los paciente
 	private void listPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -103,6 +106,29 @@ public class PacienteController extends HttpServlet {
 		
 		showPatientPage(request, response);
 		
+	}
+	
+	//Método para registrar un nuevo paciente 
+	private void createNewPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//capturo todos los datos del formulario
+		
+		String documento = request.getParameter("documento");
+		String nombre = request.getParameter("nombre");
+		String apellido = request.getParameter("apellido");
+		String email = request.getParameter("email");
+		String genero = request.getParameter("genero");
+		Date fechaNacimiento = Date.valueOf(request.getParameter("fechaNacimiento"));
+		
+		String telefono = request.getParameter("telefono");
+		String direccion = request.getParameter("direccion");
+		float peso = Float.parseFloat(request.getParameter("peso"));
+		float estatura = Float.parseFloat(request.getParameter("estatura"));
+		
+		
+		//Creo el usuario y lo redirecciono a la lista 
+		pDao.insert(new Paciente(documento, nombre, apellido, email, genero, fechaNacimiento, telefono, direccion, peso, estatura));
+		response.sendRedirect("list");	
 	}
 
 	/**
