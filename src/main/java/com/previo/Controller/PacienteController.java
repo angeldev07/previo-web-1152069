@@ -1,6 +1,8 @@
 package com.previo.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.previo.DAO.PacienteDAO;
+import com.previo.Entities.Paciente;
 
 /**
  * Servlet implementation class PacienteController
@@ -40,7 +43,7 @@ public class PacienteController extends HttpServlet {
 		// TODO Auto-generated method stub
 		//Obtenemos la accion que se envie al controlador 
 		String accion = request.getServletPath();
-		
+		doAction(request, response, accion);
 		
 	}
 	
@@ -53,10 +56,11 @@ public class PacienteController extends HttpServlet {
 			break;
 		case "/actualizarPaciente":
 			break;
-		case "/eliminarPacinete":
+		case "/eliminarPaciente":
 			break;
 			
 		default:
+			listPatient(request, response);
 			break;
 			
 		}
@@ -67,7 +71,14 @@ public class PacienteController extends HttpServlet {
 	
 	
 	//Método para listar los paciente
-	private void listPatient(HttpServletRequest request, HttpServletResponse response, String accion) throws ServletException, IOException {
+	private void listPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Obtengo la lista de paciente y la subo como atributo
+		ArrayList<Paciente> list = (ArrayList<Paciente>) pDao.list();
+		request.setAttribute("listPatient", list);
+		
+		//Redirecciono al jsp
+		request.getRequestDispatcher("lista.jsp").forward(request, response);
 		
 	}
 

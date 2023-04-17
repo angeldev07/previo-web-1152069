@@ -33,6 +33,8 @@ public class Paciente {
 	
 	private String apellido;
 	
+	private String email;
+	
 	private String genero;
 	
 	@Column(name="fechanacimiento")
@@ -46,24 +48,27 @@ public class Paciente {
 	
 	private float estatura;
 	
-	//private String contextura;
 	
 	@Transient
 	private float imc;
 
-	public Paciente(String documento, String nombre, String apellido, String genero, Date fechaNacimiento,
+	public Paciente(String documento, String nombre, String apellido, String email, String genero, Date fechaNacimiento,
 			String telefono, String direccion, float peso, float estatura) {
+		super();
 		this.documento = documento;
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.email = email;
 		this.genero = genero;
 		this.fechaNacimiento = fechaNacimiento;
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.peso = peso;
 		this.estatura = estatura;
-		//this.contextura = contextura;
 	}
 	
+	public Double getImc() {
+		return Math.ceil(this.peso / (Math.pow(this.estatura, 2)));
+	}
 	
 }
