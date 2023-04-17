@@ -61,6 +61,7 @@ public class PacienteController extends HttpServlet {
 			updatePatient(request,response);
 			break;
 		case "/eliminarPaciente":
+			deletePatiente(request,response);
 			break;
 			
 		case "/mostrarPaciente":
@@ -79,6 +80,18 @@ public class PacienteController extends HttpServlet {
 	}
 	
 	
+
+	private void deletePatiente(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//obtengo el id y lo elimino
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		pDao.delete( pDao.find(id) );
+		
+		//Redirecciono
+		response.sendRedirect("list");
+	}
 
 	private void editPatient(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		// TODO Auto-generated method stub
