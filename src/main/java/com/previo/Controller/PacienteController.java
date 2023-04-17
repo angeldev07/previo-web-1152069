@@ -59,6 +59,10 @@ public class PacienteController extends HttpServlet {
 		case "/eliminarPaciente":
 			break;
 			
+		case "/mostrarPaciente":
+			showPatientInfo(request,response);
+			break;
+			
 		default:
 			listPatient(request, response);
 			break;
@@ -79,6 +83,25 @@ public class PacienteController extends HttpServlet {
 		
 		//Redirecciono al jsp
 		request.getRequestDispatcher("lista.jsp").forward(request, response);
+		
+	}
+	
+	//Metodo para mostrar la informacion del paciente tanto al editar como al consultar
+	private void showPatientPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("paciente.jsp").forward(request, response);;
+	}
+	
+	//Metodo para mostrar la info del paciente
+	private void showPatientInfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		//consultar el paciente por el id y subirlo
+		Paciente p = pDao.find(Integer.parseInt(request.getParameter("id")));
+		
+		request.setAttribute("paciente", p);
+		request.setAttribute("showInfo", true);
+		
+		showPatientPage(request, response);
 		
 	}
 
