@@ -75,7 +75,7 @@
 		      </td>
 		      <td> 
 		      	<a class="btn btn-primary" href="mostrarPaciente?id=<c:out value="${patient.id}" /> " role="button">Ver información</a>
-		      	<a class="btn btn-secondary" href="actualizarPaciente?id=<c:out value="${patient.id}" /> " role="button">Editar</a>
+		      	<a class="btn btn-secondary" href="editarPaciente?id=<c:out value="${patient.id}" /> " role="button">Editar</a>
 		      	<a class="btn btn-danger" href="eliminarPaciente?id=<c:out value="${patient.id}" /> " role="button">Eliminar</a>
 		      </td>
 		    </tr>

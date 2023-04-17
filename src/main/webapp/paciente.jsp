@@ -39,7 +39,7 @@
 	            	
 	            	<c:if test="${paciente != null }">
 	            		<div class="form-floating mb-3">
-						 	 <input type="text" class="form-control" id="id"  name="id"  value="<c:out value="${paciente.id }" />" disabled="<c:out value="${showInfo }" />">
+						 	 <input type="text" class="form-control" id="id"  name="id"  value="<c:out value="${paciente.id }" />" >
 						  	 <label for="id">Id del paciente</label>
 						</div>
 	            	</c:if>
